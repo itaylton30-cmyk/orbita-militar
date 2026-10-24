@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Mentoria para vestibulares militares com encontros personalizados, exercícios estratégicos e um cronograma de estudos feito para você.">
+  <title>Órbita Militar — Sua aprovação começa com direção</title>
+  <style>
+    /* Identidade visual e espaçamento centralizados para facilitar a edição. */
+    :root{--bg:#07111f;--surface:#0c1929;--text:#f2f6fc;--muted:#a6b5c8;--cyan:#54e3f0;--line:rgba(167,204,229,.14);--radius:16px;--max:1160px}
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:30px}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,"Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.6}
+    a{color:inherit}button,a{-webkit-tap-highlight-color:transparent}
+    a:focus-visible{outline:3px solid var(--cyan);outline-offset:6px}
+    ::selection{background:var(--cyan);color:var(--bg)}
+    .container{width:min(var(--max),calc(100% - 64px));margin-inline:auto}
+    .skip{position:absolute;top:-100px;left:20px;z-index:10;padding:10px;background:var(--cyan);color:var(--bg)}.skip:focus{top:12px}
+    .masthead{height:100px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+    .brand{display:inline-flex;align-items:center;gap:12px;text-decoration:none;font-size:17px;font-weight:750;letter-spacing:.07em}.brand svg{width:35px;height:35px;color:var(--cyan)}
+    .brand span span{font-weight:400;color:var(--muted)}
+    .edition{font-family:Consolas,monospace;color:#8498af;letter-spacing:.12em;font-size:10px;text-transform:uppercase;display:flex;align-items:center;gap:9px}
+    .dot{height:6px;width:6px;display:inline-block;flex:none;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px #54e3f080}
+    .hero{position:relative;isolation:isolate;overflow:hidden}
+    .hero::before{content:"";position:absolute;z-index:-1;inset:0;background:radial-gradient(ellipse at 78% 42%,#12384866,transparent 52%)}
+    .hero-grid{display:grid;grid-template-columns:1.18fr 1fr;align-items:center;gap:15px;padding:85px 0 68px}
+    .eyebrow{display:flex;align-items:center;gap:10px;color:var(--cyan);text-transform:uppercase;font-size:10px;font-weight:650;letter-spacing:.19em;margin:0 0 23px}
+    .eyebrow::before{content:"";width:25px;height:1px;background:var(--cyan)}
+    h1,h2,h3,p{margin-top:0}h1,h2,h3{line-height:1.1;letter-spacing:-.045em}
+    h1{font-size:clamp(42px,4.6vw,65px);font-weight:650;margin-bottom:25px;max-width:690px}h1 em{font-style:normal;color:var(--cyan)}
+    .hero-copy{font-size:16px;color:var(--muted);max-width:450px;line-height:1.8;margin-bottom:30px}.hero-copy strong{font-weight:550;color:#e3ecf7}
+    .cta{display:inline-flex;align-items:center;justify-content:center;gap:25px;min-height:56px;padding:16px 23px;border:1px solid var(--cyan);border-radius:7px;background:var(--cyan);color:#071620;text-decoration:none;font-size:13px;font-weight:750;line-height:1.4;box-shadow:0 0 25px #54e3f015;transition:background .25s,box-shadow .25s,transform .25s}
+    .cta:hover{background:#92f5fd;box-shadow:0 0 32px #54e3f04d;transform:translateY(-3px)}.cta svg{width:18px;height:18px;flex:none}
+    .cta-note{display:flex;align-items:center;gap:7px;color:#8fa2b8;font-size:11px;margin:14px 0 0}.cta-note svg{width:13px;height:13px;color:var(--cyan)}
+    .orbital{position:relative;aspect-ratio:1;min-width:0;margin:0 -25px 0 0}
+    .orbital>svg{width:100%;height:auto;display:block;overflow:visible}.orbit-spin{transform-origin:250px 250px;animation:orbit 90s linear infinite}
+    @keyframes orbit{to{transform:rotate(360deg)}}
+    .orbital-label{position:absolute;font:9px Consolas,monospace;letter-spacing:.12em;color:#6d9da9;top:7%;right:8%}.orbital-caption{position:absolute;bottom:8%;left:13%;font:9px Consolas,monospace;color:#89a1b9;letter-spacing:.13em}
+    .coordinates{position:absolute;right:0;bottom:24px;writing-mode:vertical-rl;color:#52677e;font:9px Consolas,monospace;letter-spacing:.12em}
+    .mission-strip{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:23px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .mission-strip>span{font:10px Consolas,monospace;color:#7e91a7;letter-spacing:.12em;text-transform:uppercase}.exams{display:flex;align-items:center;gap:30px;flex-wrap:wrap;font-size:15px;font-weight:600;letter-spacing:.05em;color:#c0cede}.exams i{height:3px;width:3px;background:#3f5267;border-radius:50%}
+    .benefits{padding:92px 0 85px}.section-heading{display:flex;align-items:end;justify-content:space-between;gap:35px;margin-bottom:34px}h2{font-size:clamp(30px,3.2vw,42px);font-weight:600;margin-bottom:0}.section-heading>p{max-width:290px;margin-bottom:3px;color:var(--muted);font-size:13px;line-height:1.8}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{padding:28px;background:linear-gradient(140deg,#10223788,#0c192966);border:1px solid var(--line);border-radius:var(--radius);position:relative}
+    .card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px}.icon{height:42px;width:42px;display:grid;place-items:center;background:#54e3f009;border:1px solid #54e3f02b;border-radius:10px;color:var(--cyan)}.icon svg{width:21px;height:21px}.number{font:10px Consolas,monospace;color:#627990;letter-spacing:.12em}
+    h3{font-size:19px;font-weight:600;line-height:1.3;margin-bottom:13px;letter-spacing:-.02em}.card p{font-size:13px;color:var(--muted);line-height:1.85;margin-bottom:24px}.tag{color:var(--cyan);font-size:9px;font-weight:600;letter-spacing:.11em;text-transform:uppercase}
+    .strategy{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center;padding:65px 0 80px;border-top:1px solid var(--line)}.strategy h2{max-width:430px;margin-bottom:22px}.strategy-intro{font-size:14px;color:var(--muted);max-width:420px;line-height:1.9;margin-bottom:0}
+    .steps{padding:0;margin:0;list-style:none}.steps li{display:grid;grid-template-columns:35px 1fr;gap:16px;padding:23px 0;border-bottom:1px solid var(--line)}.steps li:first-child{padding-top:0}.steps li:last-child{border-bottom:0;padding-bottom:0}.step-no{color:var(--cyan);font:11px Consolas,monospace;padding-top:5px}.steps h3{font-size:16px;margin-bottom:7px}.steps p{font-size:13px;color:var(--muted);margin:0;line-height:1.8}
+    .final-section{padding:0 0 65px}.final-box{position:relative;overflow:hidden;text-align:center;padding:54px 25px;border:1px solid #54e3f035;border-radius:var(--radius);background:radial-gradient(ellipse at 50% 120%,#17465399,transparent 75%),#0b1b2a}.final-box::before,.final-box::after{content:"";position:absolute;width:450px;height:450px;border:1px solid #54e3f00d;border-radius:50%;top:-160px;left:-300px;pointer-events:none}.final-box::after{left:auto;right:-300px}.final-box .eyebrow{justify-content:center;margin-bottom:16px}.final-box h2{margin-bottom:16px}.final-box>p:not(.eyebrow){color:var(--muted);font-size:14px;margin-bottom:25px}.final-box .cta-note{justify-content:center;margin-bottom:0}
+    footer{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:25px 0 32px;border-top:1px solid var(--line)}footer .brand{font-size:12px;gap:8px}footer .brand svg{width:25px;height:25px}footer p{font-size:10px;color:#7e91a7;margin:0}
+    @media(min-width:1500px){.hero-grid{padding-top:105px;padding-bottom:85px}}
+    @media(max-width:900px){.container{width:calc(100% - 40px)}.hero-grid{padding-top:65px;gap:0}h1{font-size:46px}.orbital{margin-right:-30px}.cards{gap:12px}.card{padding:23px}.strategy{gap:40px}.exams{gap:20px}}
+    @media(max-width:650px){.container{width:calc(100% - 40px)}.masthead{height:80px}.brand{font-size:14px}.edition{font-size:8px;letter-spacing:.06em}.hero-grid{grid-template-columns:1fr;padding:48px 0 10px}.eyebrow{font-size:9px;letter-spacing:.13em;margin-bottom:20px}h1{font-size:clamp(38px,10vw,55px);max-width:520px}.hero-copy{font-size:15px}.hero .cta{width:100%;gap:18px}.orbital{width:min(100%,380px);margin:18px auto 0}.coordinates{display:none}.mission-strip{align-items:flex-start;flex-direction:column;gap:14px;padding:22px 0}.exams{gap:18px;font-size:13px;justify-content:space-between;width:100%}.benefits{padding:58px 0}.section-heading{display:block;margin-bottom:26px}.section-heading>p{max-width:100%;margin:18px 0 0}.cards{grid-template-columns:1fr;gap:15px}.card{padding:25px}.card-top{margin-bottom:23px}.card p{margin-bottom:20px}.strategy{grid-template-columns:1fr;gap:32px;padding:48px 0 55px}.strategy h2{max-width:350px}.strategy-intro{max-width:none}.final-section{padding-bottom:40px}.final-box{padding:38px 20px}.final-box h2{font-size:30px}.final-box .cta{width:100%;font-size:12px;gap:15px}footer{align-items:flex-start;flex-direction:column;gap:13px;padding-bottom:25px}footer p{font-size:10px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.orbit-spin{animation:none}.cta{transition:none}.cta:hover{transform:none}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+  <!-- SVGs decorativos, criados em código: nenhuma imagem externa necessária. -->
+  <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute"><defs>
+    <symbol id="logo" viewBox="0 0 40 40"><circle cx="20" cy="20" r="11" fill="none" stroke="currentColor" stroke-width="1.3"/><ellipse cx="20" cy="20" rx="20" ry="7" transform="rotate(-40 20 20)" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="m20 12 4 13-4-3-4 3z" fill="currentColor"/></symbol>
+    <symbol id="arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="check" viewBox="0 0 20 20"><path d="m5 10 3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs></svg>
+  <header class="container masthead">
+    <a class="brand" href="#" aria-label="Órbita Militar, início"><svg aria-hidden="true"><use href="#logo"/></svg><span>ÓRBITA <span>MILITAR</span></span></a>
+    <span class="edition"><span class="dot"></span>Mentoria de alta direção</span>
+  </header>
+  <main id="conteudo">
+    <section class="hero" aria-labelledby="titulo">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Sua missão. Nossa estratégia.</p>
+          <h1 id="titulo">Do zero à aprovação nos <em>vestibulares militares.</em></h1>
+          <p class="hero-copy">O seu objetivo precisa de um plano à altura. Tenha um <strong>cronograma 100% específico para você</strong> e orientação para transformar esforço em evolução.</p>
+          <a class="cta" href="#inscricao">Garantir minha vaga no esquadrão<svg aria-hidden="true"><use href="#arrow"/></svg></a>
+          <p class="cta-note"><svg aria-hidden="true"><use href="#check"/></svg>Seu ritmo. Seu objetivo. Sua trajetória.</p>
+        </div>
+        <div class="orbital" aria-hidden="true">
+          <span class="orbital-label">PLANO DE VOO / 001</span>
+          <svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="halo"><stop stop-color="#54e3f0" stop-opacity=".15"/><stop offset="1" stop-color="#54e3f0" stop-opacity="0"/></radialGradient>
+              <linearGradient id="planet" x1="195" y1="170" x2="320" y2="335" gradientUnits="userSpaceOnUse"><stop stop-color="#225867"/><stop offset=".4" stop-color="#102d3d"/><stop offset="1" stop-color="#081624"/></linearGradient>
+              <linearGradient id="trail"><stop stop-color="#54e3f0" stop-opacity="0"/><stop offset="1" stop-color="#54e3f0"/></linearGradient>
+            </defs>
+            <circle cx="250" cy="250" r="230" fill="url(#halo)"/>
+            <g stroke="#477486" stroke-opacity=".26"><circle cx="250" cy="250" r="208" stroke-dasharray="2 7"/><circle cx="250" cy="250" r="175"/><circle cx="250" cy="250" r="135"/><path d="M250 23v65m0 324v65M23 250h65m324 0h65"/><path d="M103 103l24 24m246 246 24 24M103 397l24-24m246-246 24-24"/></g>
+            <g fill="#b3e6ef"><circle cx="90" cy="160" r="1.5"/><circle cx="389" cy="85" r="1.3"/><circle cx="432" cy="328" r="1.5"/><circle cx="156" cy="425" r="1"/><circle cx="330" cy="39" r="1"/><circle cx="48" cy="346" r="1"/></g>
+            <circle cx="250" cy="250" r="91" fill="url(#planet)" stroke="#54e3f0" stroke-opacity=".25"/>
+            <g stroke="#65c1d0" stroke-opacity=".12"><ellipse cx="250" cy="250" rx="48" ry="91"/><ellipse cx="250" cy="250" rx="77" ry="91"/><ellipse cx="250" cy="250" rx="91" ry="32"/><ellipse cx="250" cy="250" rx="85" ry="64"/><path d="M159 250h182m-91-91v182"/></g>
+            <ellipse cx="250" cy="250" rx="220" ry="70" transform="rotate(-35 250 250)" stroke="#54e3f0" stroke-opacity=".32"/>
+            <path d="M70 354c26 27 121 8 221-49 85-48 143-106 151-141" stroke="url(#trail)" stroke-width="2"/>
+            <g class="orbit-spin"><circle cx="378" cy="116" r="13" fill="#54e3f0" fill-opacity=".08"/><circle cx="378" cy="116" r="4" fill="#86f5ff"/><circle cx="378" cy="116" r="8" stroke="#54e3f0" stroke-opacity=".4"/></g>
+            <path d="m250 211 15 56-15-12-15 12z" fill="#b4f6fc"/><path d="M250 267v20" stroke="#54e3f0" stroke-dasharray="3 4"/>
+            <path d="M345 331h46l17 17h52" stroke="#54e3f0" stroke-opacity=".4"/><circle cx="345" cy="331" r="3" fill="#54e3f0"/>
+            <text x="395" y="367" fill="#86c7d0" font-family="Consolas,monospace" font-size="8" letter-spacing="1.3">DESTINO: APROVAÇÃO</text>
+          </svg>
+          <span class="orbital-caption">ESTRATÉGIA QUE COLOCA VOCÊ EM ÓRBITA.</span>
+        </div>
+      </div>
+      <span class="coordinates" aria-hidden="true">FOCO · CONSTÂNCIA · DIREÇÃO</span>
+    </section>
+    <div class="container mission-strip" aria-label="Foco da preparação">
+      <span>Um plano para a sua próxima conquista</span>
+      <div class="exams"><span>ESA</span><i aria-hidden="true"></i><span>EsPCEx</span><i aria-hidden="true"></i><span>AFA</span><i aria-hidden="true"></i><span>EFOMM</span></div>
+    </div>
+    <section class="container benefits" aria-labelledby="beneficios">
+      <div class="section-heading"><div><p class="eyebrow">O que faz parte da missão</p><h2 id="beneficios">Tudo conectado.<br>Ao seu objetivo.</h2></div><p>Uma preparação com propósito, do planejamento à prática. Cada etapa pensada para você.</p></div>
+      <div class="cards">
+        <article class="card">
+          <div class="card-top"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="13" height="14" rx="3"/><path d="m16 10 5-3v10l-5-3M7 10h5m-5 4h3"/></svg></span><span class="number">01 / CONEXÃO</span></div>
+          <h3>4 encontros ao vivo.<br>O foco é você.</h3><p>Encontros personalizados para orientar sua preparação, esclarecer dúvidas e ajustar a rota dos seus estudos.</p><span class="tag">Orientação individual</span>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m14 4 6 6M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15zM4 20h16"/></svg></span><span class="number">02 / PRÁTICA</span></div>
+          <h3>4 aulas de exercícios.<br>Estratégia em ação.</h3><p>Resolução de questões estratégicas para entender o raciocínio, reconhecer dificuldades e praticar com intenção.</p><span class="tag">Conhecimento aplicado</span>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4m10-4v4M3 11h18m-14 4h3m4 0h3m-10 3h3"/></svg></span><span class="number">03 / DIREÇÃO</span></div>
+          <h3>Um cronograma.<br>100% seu.</h3><p>Um plano de estudos individualizado e direcionado ao seu vestibular, considerando seu nível e o tempo disponível.</p><span class="tag">Planejamento personalizado</span>
+        </article>
+      </div>
+    </section>
+    <section class="container strategy" aria-labelledby="estrategia">
+      <div><p class="eyebrow">Por que a Órbita Militar?</p><h2 id="estrategia">Esforço é o combustível.<br>Estratégia é a direção.</h2><p class="strategy-intro">Estudar muito fica mais produtivo quando você sabe o que priorizar. Nossa mentoria conecta sua realidade ao seu objetivo, com clareza sobre cada próximo passo.</p></div>
+      <ol class="steps">
+        <li><span class="step-no" aria-hidden="true">01</span><div><h3>Saiba onde concentrar sua energia</h3><p>Direcione seu tempo para os conteúdos e dificuldades que precisam de mais atenção.</p></div></li>
+        <li><span class="step-no" aria-hidden="true">02</span><div><h3>Troque o improviso por um plano</h3><p>Organize uma rotina de estudos possível, alinhada à sua disponibilidade e à prova que você vai enfrentar.</p></div></li>
+        <li><span class="step-no" aria-hidden="true">03</span><div><h3>Avance com orientação</h3><p>Use os encontros para revisar sua estratégia e seguir com mais clareza na preparação.</p></div></li>
+      </ol>
+    </section>
+    <section class="container final-section" id="inscricao" aria-labelledby="convite">
+      <div class="final-box"><p class="eyebrow">O próximo passo é seu</p><h2 id="convite">Sua missão começa com uma decisão.</h2><p>Leve sua preparação a sério. Dê o primeiro passo com direção.</p>
+        <!-- CONFIGURE ANTES DE PUBLICAR: substitua 55SEUNUMERO pelo DDI + DDD + número, somente dígitos (ex.: 5511999999999). -->
+        <a class="cta" href="https://wa.me/55SEUNUMERO?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20a%20mentoria%20%C3%93rbita%20Militar." target="_blank" rel="noopener noreferrer">Garantir minha vaga no esquadrão<svg aria-hidden="true"><use href="#arrow"/></svg></a>
+        <p class="cta-note">Converse com a gente pelo WhatsApp <span aria-label="abre em nova aba">↗</span></p>
+      </div>
+    </section>
+  </main>
+  <footer class="container"><a class="brand" href="#" aria-label="Voltar ao início"><svg aria-hidden="true"><use href="#logo"/></svg><span>ÓRBITA <span>MILITAR</span></span></a><p>© <span id="ano">2026</span> Órbita Militar. Todos os direitos reservados.</p></footer>
+  <script>document.getElementById('ano').textContent = new Date().getFullYear();</script>
+</body>
+</html>
